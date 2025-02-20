@@ -9,18 +9,22 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "0cjaaw3zskahwcz05kyifwfkjhpnar3bsmb7i8ah8gm0755g73rk";
-    aarch64-linux = "1bf8ir8mf8slh89g1rz62i1s1npmxb3vmqr32xm3jd3p4hiqm345";
+    x86_64-linux = "13cmlmsm3g57nll2mm2d7lf08wmlw871mqvdarfrhmh838dsk564";
+    aarch64-linux = "09rzpm4b2197zag2b0fpi2lxwaz4zkvzr8jfnij65fgiplksrgh7";
+    x86_64-darwin = "170snxg3mq65kj5si453iprapmzjbly3qswnlajshp3d3pprnym0";
+    aarch64-darwin = "16g4ygzzq4hb977p2nbydrappadiidjfv2nh7qji3nwfymf0w4f5";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.11.2/kraft_0.11.2_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.11.2/kraft_0.11.2_linux_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.11.3/kraft_0.11.3_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.11.3/kraft_0.11.3_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft/kraftkit/releases/download/v0.11.3/kraft_0.11.3_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft/kraftkit/releases/download/v0.11.3/kraft_0.11.3_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "kraftkit";
-  version = "0.11.2";
+  version = "0.11.3";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -32,9 +36,9 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -vr "${srcdir}/dist/kraft" "${out}/bin/kraft"
-    cp -vr "${srcdir}/dist/kraftld" "${out}/bin/kraftld"
-    installManPage ${srcdir}/man/*
+    cp -vr "kraft" "$out/bin/kraft"
+    cp -vr "kraftld" "$out/bin/kraftld"
+    installManPage man/*
   '';
 
   system = system;
@@ -47,7 +51,9 @@ stdenvNoCC.mkDerivation {
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
 
     platforms = [
+      "aarch64-darwin"
       "aarch64-linux"
+      "x86_64-darwin"
       "x86_64-linux"
     ];
   };
