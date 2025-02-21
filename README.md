@@ -1,5 +1,6 @@
 # Unikraft NUR repository
 
+![](https://github.com/unikraft/nur/workflows/check/badge.svg)
+
 Unikraft NUR repository for KraftKit.
 
-![Build and populate cache](https://github.com/unikraft/nur-packages/workflows/Check%20Evaluation/badge.svg)
