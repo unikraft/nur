@@ -9,22 +9,22 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "0cb9l8bnqkn2mvbv8w873r3d1wkbz625nvx6xd7y2bk0rmjj595g";
-    aarch64-linux = "1sv8k52jach1x5mpydclczzcsrw2ssirqwbyhi92fdqiavgjq73b";
-    x86_64-darwin = "0wcv3gya7m4hql9mkkw14rrciw2x9fl36vvghh8lg332c90wk6vx";
-    aarch64-darwin = "1hlypdl2b7c8yz5r9k56df4h8d99i1qp6srv29rgdz6j618pkkxk";
+    x86_64-linux = "01q1yqfxik7ibxi51v49ff348d3cl0q6bw8fjffngixbildr9y92";
+    aarch64-linux = "1h0qlq1gvm5m75a9ba6m4hwk6525bydwgdfdp76b4yzpb2mlv9f7";
+    x86_64-darwin = "1abpav1x7cg7i9iis8x9h0hgqjz1jbm3mq474wzk8f0brl8g37lr";
+    aarch64-darwin = "0ljrga1k8vwm9pbrw70hnqkp3w471wvl2hxygixr2mlds118zi0r";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.12.8/kraft_0.12.8_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.12.8/kraft_0.12.8_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft/kraftkit/releases/download/v0.12.8/kraft_0.12.8_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft/kraftkit/releases/download/v0.12.8/kraft_0.12.8_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.12.9/kraft_0.12.9_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft/kraftkit/releases/download/v0.12.9/kraft_0.12.9_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft/kraftkit/releases/download/v0.12.9/kraft_0.12.9_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft/kraftkit/releases/download/v0.12.9/kraft_0.12.9_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "kraftkit";
-  version = "0.12.8";
+  version = "0.12.9";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
