@@ -16,6 +16,8 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  unikraft-cli = pkgs.callPackage ./pkgs/unikraft-cli { };
+  unikraft-cli-staging = pkgs.callPackage ./pkgs/unikraft-cli-staging { };
   kraftkit = (pkgs.callPackage ./pkgs/kraftkit { }).overrideAttrs (
     final: prev: {
       meta = prev.meta // {
