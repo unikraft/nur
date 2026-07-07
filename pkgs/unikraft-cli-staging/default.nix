@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0gw7gyf36h78dfvs8ci4qlj3sxg00zyrww5ljzyrrc3gykra29hj";
-    aarch64-linux = "1jw8d4fc4vq8irl9l8bcqdl0djbwklcnwjhp8phc1885gx5457l1";
-    x86_64-darwin = "0n341fif2r1p80h6yqf9hxv6sfrymmqbn6dh8vwsyiqn2aq6mdps";
-    aarch64-darwin = "05mr4flppkq696zy2fv8ajqf8d12kfxm8vlm6vcgqpfq9hnd4jfr";
+    x86_64-linux = "0x76wh32vj0jq63bbngs948n4hcsb29izmwm2iaxl8v4s1s4c86l";
+    aarch64-linux = "0sc76p2kq66pigpa98vva90npmnw87ddbyw3xw6fpvq2x0k40bj8";
+    x86_64-darwin = "1kmsy6q9bcm5ixxgx9d6xa01phxbw27rlg37di997m44za07wx05";
+    aarch64-darwin = "0bpc31by0xvy5bw13gfxk9i4vq376j9bzrl2y398ibzkmp7mqg80";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.11/unikraft-cli_0.4.2-staging.11_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.11/unikraft-cli_0.4.2-staging.11_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.11/unikraft-cli_0.4.2-staging.11_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.11/unikraft-cli_0.4.2-staging.11_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.12/unikraft-cli_0.4.2-staging.12_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.12/unikraft-cli_0.4.2-staging.12_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.12/unikraft-cli_0.4.2-staging.12_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.12/unikraft-cli_0.4.2-staging.12_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.4.2-staging.11";
+  version = "0.4.2-staging.12";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -42,7 +42,7 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -vr $binary $out/bin/$binary
+    cp -vr unikraft $out/bin/$binary
     installManPage docs/man/*
   '';
 
