@@ -18,10 +18,10 @@ let
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
