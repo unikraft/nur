@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1h5dl4ijfjciyprhghzx5rj6sm1af8ivxqchhsjf2ymqad2rq7gz";
-    aarch64-linux = "0ychchz0665snb0z0idrp1hf71gm3y15dfcnmbl2aijypc8vxbyf";
-    x86_64-darwin = "1g14mmww5laabvx7swndvy2a0f5m530q56xlcczszsmvr2lgwpc0";
-    aarch64-darwin = "1dc52qjigqbjrf1dlklsn52z1scdbh9bd8mg518dj6zzji7sln9a";
+    x86_64-linux = "18fy97f9zd3ld7pcbnsghghb33qmyhsxyapd2c4l588hpn82jk6c";
+    aarch64-linux = "1lh6f39y5j9hgnrjjbxp8d0rplabsd6namyphbqb1lng107m2nzf";
+    x86_64-darwin = "1030bir9w38x3g2n37as7q497pbgqkdlkw60rpxhjczi9sz1pi8w";
+    aarch64-darwin = "1mvd5dvwd4vs6y7jwkhkl9f35zvcqlp2zd1iw6p11cwa0ba9a1gq";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2-staging.9/unikraft-cli_0.4.2-staging.9_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2/unikraft-cli_0.4.2_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2/unikraft-cli_0.4.2_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2/unikraft-cli_0.4.2_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.4.2/unikraft-cli_0.4.2_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
-  pname = "unikraft-cli-staging";
-  version = "0.4.2-staging.9";
+  pname = "unikraft-cli";
+  version = "0.4.2";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -42,7 +42,7 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -vr $binary $out/bin/$binary
+    cp -vr unikraft $out/bin/$binary
     installManPage docs/man/*
   '';
 
