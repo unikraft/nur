@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1swi9y56g2qjw42lvfmrb6i7qbwvz1lf79yb9rzj003f10aspl57";
-    aarch64-linux = "1n96qa0wp6m5j2rhq96kb5k2d4b0jr0psjkzfvalcwgvvdd14jmv";
-    x86_64-darwin = "0gcm4px8f3jwibxsjg7znqmm9pz3npgdmlbj2zcwab13bnpcl863";
-    aarch64-darwin = "19ygmz1d5jyags03yi12gi4dqkkga019y51z87mvd8bjzqdzzbv8";
+    x86_64-linux = "0qpsslvss6sy0hwb2c34hsmb6b9j7976kwhg8zayj28j20j54dyc";
+    aarch64-linux = "0kjk2nmkz0j6fxhbxw24r8nvvzjpppgfrla2x1s9xzbmp999rhxc";
+    x86_64-darwin = "1s0jvnrpx700kkqrdl4d6jk2xrq7206kl76wnysd7xrwzhlcc01q";
+    aarch64-darwin = "0qhyxqv3rr3z52p02ifwi8d6l5x4xmf356cs2klk3a35fhvq45zh";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.1/unikraft-cli_0.5.2-staging.1_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.1/unikraft-cli_0.5.2-staging.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.1/unikraft-cli_0.5.2-staging.1_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.1/unikraft-cli_0.5.2-staging.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.2/unikraft-cli_0.5.2-staging.2_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.2/unikraft-cli_0.5.2-staging.2_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.2/unikraft-cli_0.5.2-staging.2_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.2/unikraft-cli_0.5.2-staging.2_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.5.2-staging.1";
+  version = "0.5.2-staging.2";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -41,9 +41,11 @@ stdenvNoCC.mkDerivation {
   ];
 
   installPhase = ''
+    runHook preInstall
     mkdir -p $out/bin
     cp -vr unikraft $out/bin/$binary
     installManPage docs/man/*
+    runHook postInstall
   '';
 
   meta = {
