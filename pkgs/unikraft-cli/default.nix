@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0srad4gdpvs7nzbc9gc7wqd96rmf4hrafzinfj4j0mrs5iyliwhh";
-    aarch64-linux = "1vj9hgmddmzxn93r7vlzdfj633pi0prhwn80pcgzmw3izx7lxbcz";
-    x86_64-darwin = "14vqgps6pvv7k4imdi8103d59x1x6v5xnkd05br13sn3gvh85w5c";
-    aarch64-darwin = "04ryhgsbav5jb9rnaz3hlnk4n53vvzl2gr1v6slr65swfki2fwq8";
+    x86_64-linux = "11yp3hybzim4mlgdxhkg2jrwg6bgmgrq2nzll7hy8c05zmyh4g3g";
+    aarch64-linux = "12gp582qcl1j1hkpz7wa1vngn3i45jy1l4l0zwr52jdhs8q7xsba";
+    x86_64-darwin = "1lbxabdb347xz7g94383fgfs0ilwnh1nahmg1kb6yi4lk02dkz33";
+    aarch64-darwin = "1g1cdbwafwywkx3n3gri8yv6w64akdp2qi995facfrk1la1k3lv3";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.1/unikraft-cli_0.5.1_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.1/unikraft-cli_0.5.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.1/unikraft-cli_0.5.1_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.1/unikraft-cli_0.5.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2/unikraft-cli_0.5.2_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2/unikraft-cli_0.5.2_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2/unikraft-cli_0.5.2_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2/unikraft-cli_0.5.2_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli";
-  version = "0.5.1";
+  version = "0.5.2";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -41,9 +41,11 @@ stdenvNoCC.mkDerivation {
   ];
 
   installPhase = ''
+    runHook preInstall
     mkdir -p $out/bin
     cp -vr unikraft $out/bin/$binary
     installManPage docs/man/*
+    runHook postInstall
   '';
 
   meta = {
