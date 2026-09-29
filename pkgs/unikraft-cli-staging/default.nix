@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0j5aa06pcs47s51l2ysljlymln09b5vhb4dc2zfq0xvm1ad5mx7c";
-    aarch64-linux = "0c7qsawzbivf1kkb5b7l3chwc8yqn67k0d0w17hgy8ir7rzrf999";
-    x86_64-darwin = "0vnn5gzl6ac79b6hxppda0qk8yrdj3niw8xlrq54jx9f5kfgmp9d";
-    aarch64-darwin = "1g5vd1wvmj9f4gg8wmb0hg456vya9phpyyyasyczy5wg4s7ir38c";
+    x86_64-linux = "0pkjj05sjy0598j0p9gpqa501v1xikwx9yw2xansf56kplp8pcgw";
+    aarch64-linux = "0nyps4yiic7a4nir3nx2n69vrl674pyjf27xj6z76i0vfrfaama5";
+    x86_64-darwin = "1g9jb37zwrg18x2dib8c3l2mla2pqkkqjkgxr8m29wj3sy31fjhl";
+    aarch64-darwin = "1jz09ida0a26xi8hiyyd2k5d8n4iyvrzz0amjhyhzvbxbqalrq3n";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.16/unikraft-cli_0.5.2-staging.16_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.16/unikraft-cli_0.5.2-staging.16_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.16/unikraft-cli_0.5.2-staging.16_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.5.2-staging.16/unikraft-cli_0.5.2-staging.16_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.0-staging.1/unikraft-cli_0.6.0-staging.1_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.0-staging.1/unikraft-cli_0.6.0-staging.1_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.0-staging.1/unikraft-cli_0.6.0-staging.1_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.0-staging.1/unikraft-cli_0.6.0-staging.1_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.5.2-staging.16";
+  version = "0.6.0-staging.1";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
