@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1zc36pmmsqyyh1w74jbn8h3jp8hpmx22dql2mriybym60mrq33lc";
-    aarch64-linux = "053vk5mn9x9s0x8f6mxp8d8crdpvxk1lb7dy73sk55n93wc7ikh3";
-    x86_64-darwin = "1vs944byib233i2a6hwr6awwdnkhagz398yn6qk9waspzizq1gr8";
-    aarch64-darwin = "0z3in1hy6da51jjhdjfgw6bq24gzjp2hzclabi9rn1iv5xblp0ny";
+    x86_64-linux = "0zd9506n16ddffrifyffsjkaaw4h8bqjza88j2f4byqv7gyz3gby";
+    aarch64-linux = "0qyabglxy6yls7p60jf70lmh6h7j4ggnpjjdar7dnm89ww6mk2xx";
+    x86_64-darwin = "1p9850rp1nwnypk1cxpvdapk3mfxgxx0bdz7am0zm4nskq1b0hx7";
+    aarch64-darwin = "0p15jkkg2pd7yn644vkpj7a4qvh31bv17f2df3bgv2y347dr6nz0";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.1/unikraft-cli_0.6.1_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.1/unikraft-cli_0.6.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.1/unikraft-cli_0.6.1_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.1/unikraft-cli_0.6.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.2/unikraft-cli_0.6.2_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.2/unikraft-cli_0.6.2_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.2/unikraft-cli_0.6.2_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.6.2/unikraft-cli_0.6.2_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli";
-  version = "0.6.1";
+  version = "0.6.2";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
