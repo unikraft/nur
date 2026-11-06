@@ -11,22 +11,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0lz99f5w4920bjw0mi5g307rgpdwjzkjlp9xbhb3jhjrjndg8jpb";
-    aarch64-linux = "01sfbc1m7zmzps7gjkkcnw09lfy43j8x9k9jcj5s38iz6dhqsa9p";
-    x86_64-darwin = "05bal7f09d7lv9ffx0mvyngvms6nrzimwq1w8nfv2d6frlh6vyrm";
-    aarch64-darwin = "0k5n4y9440p55hbakp86gxgm2b4193p63x89arkxyydl2xr8nh75";
+    x86_64-linux = "1jjsjawdy4di6nb00zydsxgvrbmyykysmigf0na6dpnzar32dp47";
+    aarch64-linux = "0f0zf7v0ghwsc83rv36dlrnvi3hwncwc7acgwc9hff53yrfyyncm";
+    x86_64-darwin = "0fmx6ns1wxiccica46yckb4qsw7g1rcjpjnhzkrqhmxb4qbka1ls";
+    aarch64-darwin = "0qyhgm0sgsmj5sy731x345pw42dxicspidv8i7d6malv6nkdc3yr";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.20/unikraft-cli_0.7.0-staging.20_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.20/unikraft-cli_0.7.0-staging.20_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.20/unikraft-cli_0.7.0-staging.20_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.20/unikraft-cli_0.7.0-staging.20_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.21/unikraft-cli_0.7.0-staging.21_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.21/unikraft-cli_0.7.0-staging.21_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.21/unikraft-cli_0.7.0-staging.21_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.7.0-staging.21/unikraft-cli_0.7.0-staging.21_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.7.0-staging.20";
+  version = "0.7.0-staging.21";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
