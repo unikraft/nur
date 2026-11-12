@@ -5,28 +5,26 @@
   fetchurl,
   installShellFiles,
   stdenvNoCC,
-  stdenv,
-  autoPatchelfHook,
 }:
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1x525g393cbarx5nrva7y6xk84wldxr3v6z38pxanhkhj7kcyc3l";
-    aarch64-linux = "1mm5abrzp918bj3b218bafrl1n4a8i5dsp4c5zvvwyklfxaqm2zz";
-    x86_64-darwin = "0kpz5s25v1fylkx96kmc6fz8jrl3jmrc3vcxjq6xs421526mr1yp";
-    aarch64-darwin = "15lwzifqm2adf40zkvynkr3rxbh74kickd7p9srfgbqihnsrdkvf";
+    x86_64-linux = "1qhffan7dj0vr1mixqpdl7nnm7s1vawlym6xl9i9jp9qaay0alh8";
+    aarch64-linux = "057dv4xh0l7hviny2707s9igsnsj1ps7wi3wj0sa16mzfa6irf56";
+    x86_64-darwin = "1sgv7yyhm3xwnpmdqyz1i408x3y804bg8zdz6pgk6k3wh47dhjhi";
+    aarch64-darwin = "1r38kr12zvry6ql6xb7pahh0q0fixpw2z8adbwl19idjg77rhj91";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.10/unikraft-cli_0.9.0-staging.10_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.10/unikraft-cli_0.9.0-staging.10_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.10/unikraft-cli_0.9.0-staging.10_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.10/unikraft-cli_0.9.0-staging.10_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.11/unikraft-cli_0.9.0-staging.11_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.11/unikraft-cli_0.9.0-staging.11_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.11/unikraft-cli_0.9.0-staging.11_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.11/unikraft-cli_0.9.0-staging.11_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.9.0-staging.10";
+  version = "0.9.0-staging.11";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -34,11 +32,7 @@ stdenvNoCC.mkDerivation {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenvNoCC.isLinux [ autoPatchelfHook ];
-
-  buildInputs = lib.optionals stdenvNoCC.isLinux [
-    stdenv.cc.cc.lib
-  ];
+  nativeBuildInputs = [ installShellFiles ];
 
   installPhase = ''
     runHook preInstall
