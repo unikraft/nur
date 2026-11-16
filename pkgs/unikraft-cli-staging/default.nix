@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "19hgf10mzd950dnnh4cjyipljqrjh4f4jk91zhyky0dh27ngdmq7";
-    aarch64-linux = "071x0nlyj28qbabsw7sxrnldz0qwawg3a3g5axi2qlqjkp4l5yr5";
-    x86_64-darwin = "1iknvcnyn5aj8ramikgvd41hwpssv17cdsck31i9x2lds9jm51yc";
-    aarch64-darwin = "1fpa6chnjqzjf6h1wbx7s108a9sbwp5kp3mkix5kziw839hi63vw";
+    x86_64-linux = "19q7sxsqincb8gk1j9f1whygpn7yr9c7wj801dns7cx7yqhh5vs6";
+    aarch64-linux = "1v1qidnx2agyhmslpk1443s8b6yrrlzvg140g8ql97nqzy9g21wl";
+    x86_64-darwin = "1h5kkfjy7pp82qz5a4sqb7y0xp4j3rfps2fhm4s4hmk3f4ib6z2j";
+    aarch64-darwin = "1kkixym52a2k7jpkwai3x8g1sj8ljv579ing391vbrim3s6xwkgm";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.22/unikraft-cli_0.9.0-staging.22_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.22/unikraft-cli_0.9.0-staging.22_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.22/unikraft-cli_0.9.0-staging.22_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.22/unikraft-cli_0.9.0-staging.22_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.23/unikraft-cli_0.9.0-staging.23_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.23/unikraft-cli_0.9.0-staging.23_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.23/unikraft-cli_0.9.0-staging.23_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0-staging.23/unikraft-cli_0.9.0-staging.23_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.9.0-staging.22";
+  version = "0.9.0-staging.23";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -43,7 +43,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta = {
-    description = "The official CLI for Unikraft Cloud — deploy and manage unikernels globally in milliseconds.";
+    description = "The official CLI for Unikraft Cloud — run any Dockerfile as a microVM that cold-starts in milliseconds.";
     homepage = "https://unikraft.com";
     license = lib.licenses.bsd3;
     mainProgram = "unikraft";
