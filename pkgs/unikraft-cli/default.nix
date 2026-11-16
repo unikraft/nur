@@ -5,28 +5,26 @@
   fetchurl,
   installShellFiles,
   stdenvNoCC,
-  stdenv,
-  autoPatchelfHook,
 }:
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "13xqkjf1qi0wikigh6lyxvhkhgll9xbg3pc5p8m8lddcp4zc6fgk";
-    aarch64-linux = "0cxnbzz3gwq3fvp67g01ydrnjmsxiawp4j3kl5a7zn2n7y1k7y7g";
-    x86_64-darwin = "13m8mjc22rpbmbifkdv7lpvjjlyrkny9zry6wmpypasyy4apy448";
-    aarch64-darwin = "18zx5m0v7yvmfi7g0hq5dxkgjv7lbh33ys4p3hxqw7c5ahyks1jf";
+    x86_64-linux = "18nrjvdrafknjwbyxc8xjhkh1vgh2bwk5lab2h6zsh024isx854s";
+    aarch64-linux = "0zpr3bh3lxknpaswvxig2jpxpd6x0i67d39jhda2p5x5036r6nhl";
+    x86_64-darwin = "15cmq662wlcvsl087inr74wxsx3ckbh1l2rmgxaby9d4rljwj8s1";
+    aarch64-darwin = "1hg1sg053qfyvq68dgs2qws1sb4zwdzj63y1f2ff4dwyn63x94a6";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.8.0/unikraft-cli_0.8.0_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.8.0/unikraft-cli_0.8.0_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.8.0/unikraft-cli_0.8.0_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.8.0/unikraft-cli_0.8.0_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0/unikraft-cli_0.9.0_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0/unikraft-cli_0.9.0_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0/unikraft-cli_0.9.0_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.0/unikraft-cli_0.9.0_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli";
-  version = "0.8.0";
+  version = "0.9.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -34,11 +32,7 @@ stdenvNoCC.mkDerivation {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenvNoCC.isLinux [ autoPatchelfHook ];
-
-  buildInputs = lib.optionals stdenvNoCC.isLinux [
-    stdenv.cc.cc.lib
-  ];
+  nativeBuildInputs = [ installShellFiles ];
 
   installPhase = ''
     runHook preInstall
@@ -49,7 +43,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta = {
-    description = "The official CLI for Unikraft Cloud — deploy and manage unikernels globally in milliseconds.";
+    description = "The official CLI for Unikraft Cloud — run any Dockerfile as a microVM that cold-starts in milliseconds.";
     homepage = "https://unikraft.com";
     license = lib.licenses.bsd3;
     mainProgram = "unikraft";
