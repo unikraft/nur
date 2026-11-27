@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1pfm2ip4grirwqx12pvv7j14kj729qnqg0n52c3n067agqy47sxy";
-    aarch64-linux = "06z7986njdslsxpgqdcy76dpy0hwdscrkw31azig8gkzyk1bqzip";
-    x86_64-darwin = "08as60p6586zvyqw4rq73mld4zq3y7b2n7z08fyjnlvazwz4fdbc";
-    aarch64-darwin = "0qxsg09fc19jrgi0m82wrjnysak4k0hjs20mnyb4f49ify3s63hw";
+    x86_64-linux = "07wwma8fsa8rildn90ik0xixc90pjmz5qsj3n0snn1czkkmj3wyw";
+    aarch64-linux = "1nvjxfhpa3farx3iqz7w93qz2w7k2v45x51d5qdmnj52bjmi33yv";
+    x86_64-darwin = "13m5sc25nlkh4fm7z5ykdvhda9jyicn6qf7vxma51f1ziv051l3j";
+    aarch64-darwin = "1k1ds7p5hjhpb0x6xhi8hva4sv1l3jb91ypmvnx85qb7xmy9y9qf";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.23/unikraft-cli_0.9.1-staging.23_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.23/unikraft-cli_0.9.1-staging.23_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.23/unikraft-cli_0.9.1-staging.23_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.23/unikraft-cli_0.9.1-staging.23_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.24/unikraft-cli_0.9.1-staging.24_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.24/unikraft-cli_0.9.1-staging.24_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.24/unikraft-cli_0.9.1-staging.24_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/unikraft-cloud/cli/releases/download/v0.9.1-staging.24/unikraft-cli_0.9.1-staging.24_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "unikraft-cli-staging";
-  version = "0.9.1-staging.23";
+  version = "0.9.1-staging.24";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
